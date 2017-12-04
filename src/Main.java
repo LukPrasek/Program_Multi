@@ -30,22 +30,23 @@ import services.ServiceMethods;
 
 public class Main {
 
+	static boolean isCorrectCarData = false;		// dodane zeby dzialalo caly czas
+
 	// @SuppressWarnings("deprecation")
 	public static void main(String[] args) throws Exception {
 
 		EmployeeObjectsStorage emplStorage = new EmployeeObjectsStorage();
+		CarObjectsStorage cos=new CarObjectsStorage();
+		System.out.println("Set size before methods "+ServiceMethods.getEmployeeSet().size());
+		//System.out.println("Set size before methods "+ServiceMethods.getEmployeeSet().toString());
+		FieldObjectsStorage newFields=new FieldObjectsStorage();
 
-		boolean isCorrectCarData = false;// dodane zeby dzialalo caly czas
 		userInterface(isCorrectCarData);
-
 	}
 
 	private static void userInterface(boolean isCorrectCarData) {
 		Scanner scanner = new Scanner(System.in);
-		FieldObjectsStorage newFields=new FieldObjectsStorage();
 		ServiceForField sff= new ServiceForField();
-		CarObjectsStorage cos=new CarObjectsStorage();
-
 		printEmployeeOption();// opcje do wyboru
 		try {
 
@@ -55,15 +56,18 @@ public class Main {
 				switch (x) {
 				case 1:
 					addEmployeeM();// ta metoda wyrzuca mismatch exception
+					break;
 				case 2:
 					do {
 						isCorrectCarData = addCar(scanner, isCorrectCarData, x);
 					} while (!isCorrectCarData);
-					;
+					break;
 				case 4:
 					addingFieldVariables(scanner4);
+					break;
 				case 5:	
 					employeeToField(sff, scanner4);
+					break;
 				}// koniec switch
 					// scanner.close();
 			} else {
@@ -78,16 +82,50 @@ public class Main {
 		userInterface(isCorrectCarData);// REKURENCJA - WYWOLUJE SIE PONOWNIE
 										// METODA
 	}
+
+	private static void addEmployeeM() throws IncorrectUserInterfaceDataException {
+		// TODO Auto-generated method stub
+		try {
+			boolean hasDrivingLicense;
+			Scanner scanner1 = new Scanner(System.in);
+			// TODO Auto-generated method stub
+			System.out.println("Provide the name of a new employee");
+			String name = scanner1.next();
+			System.out.println("Provide the surname of a new employee");
+			String surname = scanner1.next();
+			System.out.println("Provide the salary");
+			int salary = scanner1.nextInt();
+			System.out.println("Does the employee have driving license-press 'y' if yes or 'n' if no");
+			String drivingLicense = scanner1.next();
+			if (drivingLicense == "y") {
+				hasDrivingLicense = true;
+			} else {
+				hasDrivingLicense = false;
+			}
+			AddEmployee.createEmployee(name, surname, salary, hasDrivingLicense);
+			ServiceMethods.showEmployees();
+			userInterface(isCorrectCarData);
+//			System.out.println("Next employee? - If so- press 1");
+//			System.out.println("Otherwise press 2");
+
+			//int x = scanner1.nextInt();//wchodzi do metody addCar, a nie powinien
+
+		} catch (InputMismatchException e) {
+			throw new IncorrectUserInterfaceDataException(ExceptionName.INCORRECT_DIGIT_EXCEPTION, "Wrong employee");
+		}
+	}
 	private static void addingFieldVariables(Scanner scanner4) {
 		System.out.println("Introduce the customer name");
 		String customer = scanner4.next();
 		System.out.println("Introduce the city");
 		String city = scanner4.next();
-		System.out.println("Introduce the start date in the following monenclature yyyy/MM/dd");
+		System.out.println("Introduce the start date in the following monenclature dd-MM-yyyy");
 		String startDate = scanner4.next();
-		System.out.println("Introduce the finish date in the following monenclature yyyy/MM/dd");
+		System.out.println("Introduce the finish date in the following monenclature dd-MM-yyyy");
 		String finishDate = scanner4.next();
 		AddField.addField(customer, city, ServiceForField.dateFormatterFromString(startDate), ServiceForField.dateFormatterFromString(finishDate));
+		ServiceForField sff= new ServiceForField();
+		sff.showAllFields();
 	}
 
 	private static void employeeToField(ServiceForField sff, Scanner scanner4) {
@@ -194,6 +232,7 @@ public class Main {
 
 	private static void threeSeatsCarM() throws IncorrectUserInterfaceDataException {
 		try {
+
 			Scanner scanner2 = new Scanner(System.in);
 			System.out.println("Introduce the car brand");
 			String brand = scanner2.next();
@@ -212,11 +251,15 @@ public class Main {
 			//scanner2.nextLine();
 			Seat ssc=secondSeatChooser(scanner2);
 			// scanner2.nextLine();
-			System.out.println("Przed wejsciem do konstruktora");
 			AddCar.CarWithThreeSeats(brand, regNumber, prodYear, dr, fsc,
-					ssc);
+					ssc);//dodaje w konstruktorze dr,
+			System.out.println("Set size: "+ServiceMethods.getEmployeeSet().size());//dlaczego 12?
+
+			if(ServiceMethods.getEmployeeSet().remove(dr)){
+				System.out.println("Object is removed");
+			}
+
 			//scanner2.nextLine();
-			System.out.println("Po wyjsciu  konstruktora");
 			ServiceMethods.showCars();
 			//scanner2.close();
 		} catch (Exception a) { // - NIE DZIALA W TEN SPOSOB, KONCZY PRaCE
@@ -297,35 +340,4 @@ public class Main {
 
 		return null;// nie wyrzuca bledu, przechodzi do poczatku programu
 	}
-
-	private static void addEmployeeM() throws IncorrectUserInterfaceDataException {
-		// TODO Auto-generated method stub
-		try {
-			boolean hasDrivingLicense;
-			Scanner scanner1 = new Scanner(System.in);
-			// TODO Auto-generated method stub
-			System.out.println("Provide the name of a new employee");
-			String name = scanner1.next();
-			System.out.println("Provide the surname of a new employee");
-			String surname = scanner1.next();
-			System.out.println("Provide the salary");
-			int salary = scanner1.nextInt();
-			System.out.println("Does the employee have driving license-press 'y' if yes or 'n' if no");
-			String drivingLicense = scanner1.next();
-			if (drivingLicense == "y") {
-				hasDrivingLicense = true;
-			} else {
-				hasDrivingLicense = false;
-			}
-			AddEmployee.createEmployee(name, surname, salary, hasDrivingLicense);
-			ServiceMethods.showEmployees();
-			System.out.println("Next employee? - If so- press 1");
-			System.out.println("Otherwise press 2");
-
-			int x = scanner1.nextInt();//wchodzi do metody addCar, a nie powinien
-		} catch (InputMismatchException e) {
-			throw new IncorrectUserInterfaceDataException(ExceptionName.INCORRECT_DIGIT_EXCEPTION, "Wrong employee");
-		}
 	}
-
-}

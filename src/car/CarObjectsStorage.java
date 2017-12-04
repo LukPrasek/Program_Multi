@@ -13,6 +13,14 @@ public class CarObjectsStorage {
 		table[2] = AddCar.CarWithThreeSeats("Mercedes",  "WB0987632", "2015", new Driver(ServiceMethods.findEmployeeByID(5)), new Seat(ServiceMethods.findEmployeeByID(9)), new Seat(ServiceMethods.findEmployeeByID(1)));;
 		table[3] = AddCar.CarWithThreeSeats("Vokswagen",  "WRA3263136", "2016", new Driver(ServiceMethods.findEmployeeByID(6)), new Seat(ServiceMethods.findEmployeeByID(10)), new Seat(ServiceMethods.findEmployeeByID(2)));;
 		table[4] = AddCar.CarWithThreeSeats("Vokswagen",  "WX7654333", "2014", new Driver(ServiceMethods.findEmployeeByID(7)), new Seat(ServiceMethods.findEmployeeByID(11)), new Seat(ServiceMethods.findEmployeeByID(3)));;
-		
+//		showCarObjectStorage();
 	}
+
+//	public void showCarObjectStorage() {
+//		for (Car c: table) {
+//			System.out.println("DDDDAAAAAA");
+//			System.out.println(c.toString());
+//		}
+//	}
+
 }

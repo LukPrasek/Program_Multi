@@ -25,6 +25,8 @@ public class Employee {
 		employeeInterator++;
 		this.uniqueID = employeeInterator;
 		ServiceMethods.addEmployeeToList(this);
+		ServiceMethods.addEmployeeToEmployeeSet(this);
+
 	}
 
 	public String getName() {

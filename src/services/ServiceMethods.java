@@ -2,6 +2,9 @@ package services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
+
 
 import car.Car;
 import employee.Employee;
@@ -11,7 +14,7 @@ public class ServiceMethods {// all employments
 
 	public static List<Employee> employees = new ArrayList<>();//to tez jest zmienna
 	public static List<Car> cars = new ArrayList<>();
-	
+	public static Set<Employee> employeeSet= new HashSet<>();
 
 
 	public static void showEmployees() {
@@ -19,16 +22,20 @@ public class ServiceMethods {// all employments
 			System.out.println(empl.toString());//
 		}
 	}
-	public static Employee findEmployeeByID(int employeeId){
-		for  (Employee empl : employees){
-			if (employeeId==empl.getUniqueID()) {
+	public static Employee findEmployeeByID(int employeeId) {
+		for (Employee empl : employees) {
+			if (employeeId == empl.getUniqueID()) {
 				return empl;
 			}
 		}
 		return null;//
-	
-
 	}
+
+
+public static void addEmployeeToEmployeeSet (Employee emp) {
+		employeeSet.add(emp);
+			}
+
 	public static void addEmployeeToList(Employee employee) {
 		employees.add(employee);
 	}
@@ -62,4 +69,12 @@ public class ServiceMethods {// all employments
 		}
 		return null;
 }
+
+	public static Set<Employee> getEmployeeSet() {
+		return employeeSet;
+	}
+
+	public static void setEmployeeSet(Set<Employee> employeeSet1) {
+		employeeSet = employeeSet1;
+	}
 }

@@ -1,27 +1,16 @@
 
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
-import javax.swing.event.ListSelectionEvent;
+
 import services.AddCar;
 import services.AddField;
 import services.ServiceForField;
-import car.Car;
 import car.CarObjectsStorage;
-import car.CarWithThreeSeats;
 import car.Driver;
 import car.Seat;
 import employee.Employee;
 import employee.EmployeeObjectsStorage;
-import employee.Supervisor;
-import exception.BadDigiException;
 import exception.IncorrectUserInterfaceDataException;
 import exception.IncorrectUserInterfaceDataException.ExceptionName;
 import field.FieldObjectsStorage;
@@ -37,7 +26,7 @@ public class Main {
 
 		EmployeeObjectsStorage emplStorage = new EmployeeObjectsStorage();
 		CarObjectsStorage cos=new CarObjectsStorage();
-		System.out.println("Set size before methods "+ServiceMethods.getEmployeeSet().size());
+		System.out.println("Set size before methods "+ServiceMethods.getEmployeesSet().size());
 		FieldObjectsStorage newFields=new FieldObjectsStorage();
 
 		userInterface(isCorrectCarData);
@@ -245,15 +234,14 @@ public class Main {
 			//scanner2.nextLine();
 			Seat ssc=secondSeatChooser(scanner2);
 			// scanner2.nextLine();
+			System.out.println("Przed: "+ServiceMethods.employeesSet.size());
 			AddCar.CarWithThreeSeats(brand, regNumber, prodYear, dr, fsc,
 					ssc);//dodaje w konstruktorze dr,
-
-			if(ServiceMethods.getEmployeeSet().remove(dr)){
-				System.out.println("Object is removed");
-			}
-
+			ServiceMethods.removeEmployeeFromEmployeeSet(dr);//extends dodac
+			System.out.println("Po: "+ServiceMethods.employeesSet.size());
+  			//it does not work - hash and equals is needed
 			//scanner2.nextLine();
-			ServiceMethods.showCars();
+			ServiceMethods.showCars();//Fixme
 			//scanner2.close();
 		} catch (Exception a) { // - NIE DZIALA W TEN SPOSOB, KONCZY PRaCE
 								// PROGRAM, CZEMU?

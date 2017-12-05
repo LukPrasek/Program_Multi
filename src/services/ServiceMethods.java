@@ -12,9 +12,9 @@ import employee.Employee;
 public class ServiceMethods {// all employments
 
 
-	public static List<Employee> employees = new ArrayList<>();//to tez jest zmienna
+	public static List<Employee> employees = new ArrayList<>();//list to chech employees driving license
 	public static List<Car> cars = new ArrayList<>();
-	public static Set<Employee> employeeSet= new HashSet<>();
+	public static Set<Employee> employeesSet = new HashSet<>();//list to assign to the seats and to the fields
 
 
 	public static void showEmployees() {
@@ -33,8 +33,12 @@ public class ServiceMethods {// all employments
 
 
 public static void addEmployeeToEmployeeSet (Employee emp) {
-		employeeSet.add(emp);
+		employeesSet.add(emp);
 			}
+
+	public static void removeEmployeeFromEmployeeSet (Employee emp) {
+		employeesSet.remove(emp);
+	}
 
 	public static void addEmployeeToList(Employee employee) {
 		employees.add(employee);
@@ -70,11 +74,11 @@ public static void addEmployeeToEmployeeSet (Employee emp) {
 		return null;
 }
 
-	public static Set<Employee> getEmployeeSet() {
-		return employeeSet;
+	public static Set<Employee> getEmployeesSet() {
+		return employeesSet;
 	}
 
-	public static void setEmployeeSet(Set<Employee> employeeSet1) {
-		employeeSet = employeeSet1;
+	public static void setEmployeesSet(Set<Employee> employeeSet1) {
+		employeesSet = employeeSet1;
 	}
 }

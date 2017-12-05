@@ -1,6 +1,13 @@
 package employee;
 
 public class BlueCollarWorker {
-    //new class for workers
+    /**
+     * java doc
+     * new class for workers
+     */
+
+
+
+
 
 }

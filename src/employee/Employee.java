@@ -25,6 +25,8 @@ public class Employee {
 		employeeInterator++;
 		this.uniqueID = employeeInterator;
 		ServiceMethods.addEmployeeToList(this);
+		ServiceMethods.addEmployeeToEmployeeSet(this);
+
 	}
 
 	public String getName() {
@@ -71,5 +73,6 @@ public class Employee {
 		return "Employee ID:" + uniqueID + "; Imie: " + name.substring(0, 1).toUpperCase() + name.substring(1)
 				+ "; Nazwisko: " + surname.substring(0, 1).toUpperCase() + surname.substring(1)+ "; Driving license: " + hasDrivingLicense;
 	}
+
 
 }

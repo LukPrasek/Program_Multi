@@ -2,7 +2,7 @@ package car;
 
 import employee.Employee;
 
-public class Driver {
+public class Driver extends Employee{
 	private Employee driver;
 	
 

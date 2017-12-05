@@ -13,13 +13,13 @@ import field.Field;
 public class ServiceForField {
 	boolean isCorrectData = false;
 	private static List<Field> fields = new ArrayList<>();
-	private List<Employee> fieldEmployees = new ArrayList<>();
+	private static List<Employee> fieldEmployees = new ArrayList<>();
 
 	public static void addFieldToList(Field field) {
 		fields.add(field);
 	}
 
-	public List<Employee> getFieldEmployees() {
+	public static List<Employee> getFieldEmployees() {
 		return fieldEmployees;
 	}
 

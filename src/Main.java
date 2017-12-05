@@ -38,7 +38,6 @@ public class Main {
 		EmployeeObjectsStorage emplStorage = new EmployeeObjectsStorage();
 		CarObjectsStorage cos=new CarObjectsStorage();
 		System.out.println("Set size before methods "+ServiceMethods.getEmployeeSet().size());
-		//System.out.println("Set size before methods "+ServiceMethods.getEmployeeSet().toString());
 		FieldObjectsStorage newFields=new FieldObjectsStorage();
 
 		userInterface(isCorrectCarData);
@@ -105,10 +104,6 @@ public class Main {
 			AddEmployee.createEmployee(name, surname, salary, hasDrivingLicense);
 			ServiceMethods.showEmployees();
 			userInterface(isCorrectCarData);
-//			System.out.println("Next employee? - If so- press 1");
-//			System.out.println("Otherwise press 2");
-
-			//int x = scanner1.nextInt();//wchodzi do metody addCar, a nie powinien
 
 		} catch (InputMismatchException e) {
 			throw new IncorrectUserInterfaceDataException(ExceptionName.INCORRECT_DIGIT_EXCEPTION, "Wrong employee");
@@ -135,7 +130,6 @@ public class Main {
 		System.out.println("Give the employee ID, to which you would like to assign a employee");
 		ServiceMethods.showEmployees();
 		int employeeID=scanner4.nextInt();
-		//int field2ID=scanner4.nextInt();
 		sff.assignEmployeeToField(fieldID, employeeID);
 	}
 
@@ -253,7 +247,6 @@ public class Main {
 			// scanner2.nextLine();
 			AddCar.CarWithThreeSeats(brand, regNumber, prodYear, dr, fsc,
 					ssc);//dodaje w konstruktorze dr,
-			System.out.println("Set size: "+ServiceMethods.getEmployeeSet().size());//dlaczego 12?
 
 			if(ServiceMethods.getEmployeeSet().remove(dr)){
 				System.out.println("Object is removed");

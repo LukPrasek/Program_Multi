@@ -26,7 +26,6 @@ public class Main {
 
 		EmployeeObjectsStorage emplStorage = new EmployeeObjectsStorage();
 		CarObjectsStorage cos=new CarObjectsStorage();
-		System.out.println("Set size before methods "+ServiceMethods.getEmployeesSet().size());
 		FieldObjectsStorage newFields=new FieldObjectsStorage();
 
 		userInterface(isCorrectCarData);
@@ -83,7 +82,7 @@ public class Main {
 			String surname = scanner1.next();
 			System.out.println("Provide the salary");
 			int salary = scanner1.nextInt();
-			System.out.println("Does the employee have driving license-press 'y' if yes or 'n' if no");
+			System.out.println("Does the employee have driving license-press 'y' if so or 'n' if no");
 			String drivingLicense = scanner1.next();
 			if (drivingLicense == "y") {
 				hasDrivingLicense = true;
@@ -234,20 +233,16 @@ public class Main {
 			//scanner2.nextLine();
 			Seat ssc=secondSeatChooser(scanner2);
 			// scanner2.nextLine();
-			System.out.println("Przed: "+ServiceMethods.employeesSet.size());
+
 			AddCar.CarWithThreeSeats(brand, regNumber, prodYear, dr, fsc,
 					ssc);//dodaje w konstruktorze dr,
-			ServiceMethods.removeEmployeeFromEmployeeSet(dr);//extends dodac
-			System.out.println("Po: "+ServiceMethods.employeesSet.size());
-  			//it does not work - hash and equals is needed
-			//scanner2.nextLine();
+	;
 			ServiceMethods.showCars();//Fixme
 			//scanner2.close();
-		} catch (Exception a) { // - NIE DZIALA W TEN SPOSOB, KONCZY PRaCE
-								// PROGRAM, CZEMU?
+		} catch (Exception a) {
 			// TODO Auto-generated catch block
 			System.out.println(a.getMessage());
-			//threeSeatsCarM();// nie wchodzi tutaj!
+
 		}
 	}
 

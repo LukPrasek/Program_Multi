@@ -9,9 +9,7 @@ public class IncorrectUserInterfaceDataException extends Exception {
 		this.setMessage(message);
 	}
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	public IncorrectUserInterfaceDataException() {

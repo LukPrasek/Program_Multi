@@ -22,8 +22,10 @@ public class CarWithThreeSeats extends Car {
 
 	@Override
 	public String toString() {
-		return "CarWithThreeSeats [nextToDriver=" + nextToDriver.toString() + ", nextToPassanger="
-				+ nextToPassanger.toString() + "Car parts:" + super.toString() + "]";
+		return "Car With Three Seats [First seat next To Driver: " + nextToDriver.getPassanger() +
+
+				"Second seat next To Passenger= "+ nextToPassanger.getPassanger()+"]";
+				//+ "Car parts:" + super.toString() + "
 	}
 
 }

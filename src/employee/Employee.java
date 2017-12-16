@@ -29,6 +29,21 @@ public class Employee {
 
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Employee)) return false;
+
+		Employee employee = (Employee) o;
+
+		return uniqueID == employee.uniqueID;
+	}
+
+	@Override
+	public int hashCode() {
+		return uniqueID;
+	}
+
 	public String getName() {
 		return name;
 	}

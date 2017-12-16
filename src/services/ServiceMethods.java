@@ -14,7 +14,7 @@ public class ServiceMethods {// all employments
 
 	public static List<Employee> employees = new ArrayList<>();//list to chech employees driving license
 	public static List<Car> cars = new ArrayList<>();
-	public static Set<Employee> employeesSet = new HashSet<>();//list to assign to the seats and to the fields
+	public static List<Employee> employeesList= new ArrayList<>();//list to assign to the seats and to the fields
 
 
 	public static void showEmployees() {
@@ -30,7 +30,6 @@ public class ServiceMethods {// all employments
 		}
 		return null;//
 	}
-
 
 public static void addEmployeeToEmployeeSet (Employee emp) {
 		employeesSet.add(emp);
